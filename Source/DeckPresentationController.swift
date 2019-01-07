@@ -640,7 +640,9 @@ final class DeckPresentationController: UIPresentationController, UIGestureRecog
         guard gestureRecognizer.isEqual(pan) else {
             return false
         }
-        
+        if let scrollView = otherGestureRecognizer.view as? UIScrollView, scrollView.contentOffset.y > 2.0 {
+            return false
+        }
         return true
     }
     
